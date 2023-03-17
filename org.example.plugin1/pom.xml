@@ -33,9 +33,6 @@
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<configuration>
 					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
 						<manifestEntries>
 							<Maven-version>${mavenVersionManifestEntry}</Maven-version>
 						</manifestEntries>
