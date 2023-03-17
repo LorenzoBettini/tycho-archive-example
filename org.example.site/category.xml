@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <bundle id="org.example.plugin1">
+      <category name="example_category"/>
+   </bundle>
+   <category-def name="example_category" label="Example Category"/>
+</site>
