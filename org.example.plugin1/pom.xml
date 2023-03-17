@@ -20,7 +20,9 @@
 	<profiles>
 		<profile>
 			<id>release</id>
-			
+			<properties>
+				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
+			</properties>
 		</profile>
 	</profiles>
 
