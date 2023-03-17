@@ -1,5 +1,11 @@
-mvn build-helper:parse-version org.eclipse.tycho:tycho-versions-plugin:set-version \
-     -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}
+snapshot
 
-mvn versions:set -DgenerateBackupPoms=false -DremoveSnapshot=true \
-     org.eclipse.tycho:tycho-versions-plugin:update-eclipse-metadata
+mvn clean package
+
+release
+
+mvn clean package p2-release
+
+milestone
+
+mvn clean package p2-milestone
