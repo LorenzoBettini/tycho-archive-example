@@ -11,11 +11,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.example.plugin1</artifactId>
-	<version>2.31.0-SNAPSHOT</version>
+	<version>2.31.0.M1</version>
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
 		<mavenVersionManifestEntry>${project.version}</mavenVersionManifestEntry>
+		<mavenVersionMilestone>M1</mavenVersionMilestone>
 	</properties>
 
 	<profiles>
@@ -24,6 +25,29 @@
 			<properties>
 				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
 			</properties>
+		</profile>
+		<profile>
+			<id>milestone</id>
+			<properties>
+				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-packaging-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>default-validate-version</id>
+								<goals>
+									<goal>validate-version</goal>
+								</goals>
+								<phase>none</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
