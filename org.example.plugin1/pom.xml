@@ -33,6 +33,7 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<configuration>
+					<format>'v'yyyyMMdd-HHmm</format>
 					<archive>
 						<manifestEntries>
 							<Maven-version>${mavenVersionManifestEntry}</Maven-version>
