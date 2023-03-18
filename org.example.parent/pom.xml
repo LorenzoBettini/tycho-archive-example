@@ -46,7 +46,6 @@
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-packaging-plugin</artifactId>
 						<configuration>
-							<format>'v'yyyyMMdd-HHmm</format>
 							<strictVersions>false</strictVersions>
 						</configuration>
 					</plugin>
@@ -64,7 +63,6 @@
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-packaging-plugin</artifactId>
 						<configuration>
-							<format>yyyyMMdd-HHmm</format>
 							<strictVersions>false</strictVersions>
 						</configuration>
 					</plugin>
@@ -103,6 +101,10 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-packaging-plugin</artifactId>
 					<version>${tycho-version}</version>
+					<configuration>
+						<format>'v'yyyyMMdd-HHmm</format>
+						<skipPomGeneration>true</skipPomGeneration>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
