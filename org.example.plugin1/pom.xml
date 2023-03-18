@@ -21,7 +21,7 @@
 				<configuration>
 					<archive>
 						<manifestEntries>
-							<Maven-version>${mavenVersionManifestEntry}</Maven-version>
+							<Maven-version>${project.version}</Maven-version>
 						</manifestEntries>
 					</archive>
 				</configuration>

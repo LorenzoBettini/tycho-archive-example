@@ -23,8 +23,6 @@
 		<eclipse-repo.url>http://download.eclipse.org/releases/2023-03</eclipse-repo.url>
 		<build-helper-version>3.3.0</build-helper-version>
 		<versions-version>2.15.0</versions-version>
-
-		<mavenVersionManifestEntry>${project.version}</mavenVersionManifestEntry>
 	</properties>
 
 	<repositories>
@@ -38,9 +36,6 @@
 	<profiles>
 		<profile>
 			<id>p2-release</id>
-			<properties>
-				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
@@ -55,9 +50,6 @@
 		</profile>
 		<profile>
 			<id>p2-milestone</id>
-			<properties>
-				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
-			</properties>
 			<build>
 				<plugins>
 					<plugin>
