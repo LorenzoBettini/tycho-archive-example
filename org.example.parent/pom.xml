@@ -145,6 +145,9 @@
 								<phase>validate</phase>
 							</execution>
 						</executions>
+						<configuration>
+							<strictVersions>false</strictVersions>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
