@@ -3,5 +3,8 @@
    <feature id="org.example.feature">
       <category name="example_category"/>
    </feature>
+   <feature id="org.example.feature.source">
+      <category name="example_category"/>
+   </feature>
    <category-def name="example_category" label="Example Category"/>
 </site>
