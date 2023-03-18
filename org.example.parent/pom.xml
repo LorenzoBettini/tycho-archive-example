@@ -113,7 +113,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>replace-qualifier</id>
+			<id>set-milestone</id>
 			<build>
 				<plugins>
 					<plugin>
