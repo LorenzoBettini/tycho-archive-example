@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>../org.example.plugin1</module>
+		<module>../org.example.feature</module>
 		<module>../org.example.site</module>
 	</modules>
 
