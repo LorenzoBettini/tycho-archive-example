@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <bundle id="org.example.plugin1">
+   <feature id="org.example.feature">
       <category name="example_category"/>
-   </bundle>
+   </feature>
+   <feature id="org.example.feature.source">
+      <category name="example_category"/>
+   </feature>
    <category-def name="example_category" label="Example Category"/>
 </site>
