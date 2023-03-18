@@ -22,7 +22,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<eclipse-repo.url>http://download.eclipse.org/releases/2023-03</eclipse-repo.url>
 		<build-helper-version>3.3.0</build-helper-version>
-		<versions-version>2.7</versions-version>
+		<versions-version>2.15.0</versions-version>
 
 		<mavenVersionManifestEntry>${project.version}</mavenVersionManifestEntry>
 	</properties>
