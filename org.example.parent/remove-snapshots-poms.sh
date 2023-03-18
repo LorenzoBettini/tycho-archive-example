@@ -4,4 +4,4 @@ mvn \
   build-helper:parse-version \
   versions:set \
   -DgenerateBackupPoms=false \
-  -DremoveSnapshot=true
+  -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}
