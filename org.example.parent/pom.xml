@@ -111,6 +111,46 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>replace-qualifier</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>timestamp</id>
+								<goals>
+									<goal>timestamp-property</goal>
+								</goals>
+								<phase>initialize</phase>
+								<configuration>
+									<name>computedTimestamp</name>
+									<pattern>'v'yyyyMMdd-HHmm</pattern>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-versions-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>qualifier-to-timestamp</id>
+								<goals>
+									<goal>set-version</goal>
+								</goals>
+								<phase>initialize</phase>
+								<configuration>
+									<newVersion>${unqualifiedVersion}.${computedTimestamp}</newVersion>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<build>
