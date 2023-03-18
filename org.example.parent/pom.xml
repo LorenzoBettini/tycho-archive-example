@@ -134,6 +134,19 @@
 					</plugin>
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-packaging-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>build-qualifier</id>
+								<goals>
+									<goal>build-qualifier</goal>
+								</goals>
+								<phase>validate</phase>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-versions-plugin</artifactId>
 						<executions>
 							<execution>
