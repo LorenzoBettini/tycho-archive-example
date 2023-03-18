@@ -124,7 +124,7 @@
 								<goals>
 									<goal>timestamp-property</goal>
 								</goals>
-								<phase>initialize</phase>
+								<phase>validate</phase>
 								<configuration>
 									<name>computedTimestamp</name>
 									<pattern>'v'yyyyMMdd-HHmm</pattern>
@@ -141,7 +141,7 @@
 								<goals>
 									<goal>set-version</goal>
 								</goals>
-								<phase>initialize</phase>
+								<phase>validate</phase>
 								<configuration>
 									<newVersion>${unqualifiedVersion}.${computedTimestamp}</newVersion>
 								</configuration>
