@@ -22,6 +22,8 @@
 		<eclipse-repo.url>http://download.eclipse.org/releases/2023-03</eclipse-repo.url>
 		<build-helper-version>3.0.0</build-helper-version>
 		<versions-version>2.7</versions-version>
+
+		<mavenVersionManifestEntry>${project.version}</mavenVersionManifestEntry>
 	</properties>
 
 	<repositories>
@@ -31,6 +33,45 @@
 			<layout>p2</layout>
 		</repository>
 	</repositories>
+
+	<profiles>
+		<profile>
+			<id>p2-release</id>
+			<properties>
+				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-packaging-plugin</artifactId>
+						<configuration>
+							<format>'v'yyyyMMdd-HHmm</format>
+							<strictVersions>false</strictVersions>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>p2-milestone</id>
+			<properties>
+				<mavenVersionManifestEntry>${unqualifiedVersion}</mavenVersionManifestEntry>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-packaging-plugin</artifactId>
+						<configuration>
+							<format>yyyyMMdd-HHmm</format>
+							<strictVersions>false</strictVersions>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
