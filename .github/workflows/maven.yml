@@ -1,0 +1,111 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  standard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Check out repository'
+        uses: actions/checkout@v3
+
+      - name: 'Set up Java'
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: 'Cache Maven packages'
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-standard-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2-standard-
+
+      - name: Build and test
+        run: mvn verify
+        working-directory: org.example.parent
+
+      - name: Archive p2 Repositories
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: p2-repositories-SNAPSHOT
+          path: '**/target/repository'
+
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Check out repository'
+        uses: actions/checkout@v3
+
+      - name: 'Set up Java'
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: 'Cache Maven packages'
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-release-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2-release-
+
+      - name: Prepare for release
+        run: ./prepare-for-release.sh
+        working-directory: org.example.parent
+
+      - name: Build and test
+        run: mvn verify -DexpectedMavenVersion=1.0.0 -Pp2-release
+        working-directory: org.example.parent
+
+      - name: Archive p2 Repositories
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: p2-repositories-RELEASE
+          path: '**/target/repository'
+
+  milestone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Check out repository'
+        uses: actions/checkout@v3
+
+      - name: 'Set up Java'
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: 'Cache Maven packages'
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-milestone-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2-milestone-
+
+      - name: Prepare for milestone
+        run: ./prepare-for-milestone.sh M1
+        working-directory: org.example.parent
+
+      - name: Build and test
+        run: mvn verify -DexpectedMavenVersion=1.0.0.M1 -Pp2-release
+        working-directory: org.example.parent
+
+      - name: Archive p2 Repositories
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: p2-repositories-MILESTONE
+          path: '**/target/repository'

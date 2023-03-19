@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>../org.example.plugin1</module>
+		<module>../org.example.plugin1.tests</module>
 		<module>../org.example.feature</module>
 		<module>../org.example.site</module>
 	</modules>
@@ -23,6 +24,8 @@
 		<eclipse-repo.url>http://download.eclipse.org/releases/2023-03</eclipse-repo.url>
 		<build-helper-version>3.3.0</build-helper-version>
 		<versions-version>2.15.0</versions-version>
+
+		<expectedMavenVersion>${project.version}</expectedMavenVersion>
 	</properties>
 
 	<repositories>
@@ -214,6 +217,11 @@
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-versions-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
 					<version>${tycho-version}</version>
 				</plugin>
 				<plugin>
