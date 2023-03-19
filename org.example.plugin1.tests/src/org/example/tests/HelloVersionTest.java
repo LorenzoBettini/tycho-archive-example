@@ -1,5 +1,6 @@
 package org.example.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.example.HelloVersion;
@@ -11,6 +12,9 @@ import org.junit.Test;
  * This must be run with tycho-surefire-plugin
  */
 public class HelloVersionTest {
+
+	private static String expectedMavenVersion =
+		System.getProperty("expectedMavenVersion", "1.0.0-SNAPSHOT");
 
 	@Test
 	public void testVersions() {
@@ -26,6 +30,8 @@ public class HelloVersionTest {
 			bundleVersion.startsWith(expectedPrefixVersion));
 		assertTrue("expected containing with timestamp " + expectedPrefixTimestamp,
 			bundleVersion.contains(expectedPrefixTimestamp));
+
+		assertEquals(expectedMavenVersion, expectedMavenVersion);
 	}
 
 }
