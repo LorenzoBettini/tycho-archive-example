@@ -1,11 +1,71 @@
-snapshot
+STANDARD BUILD
 
 mvn clean package
 
-release
+Maven-version: 1.0.0-SNAPSHOT
+Bundle-Version: 1.0.0.v20230318-1815
 
-mvn clean package p2-release
+RELEASE
 
-milestone
+./prepare-for-release.sh
+mvn clean package -Pp2-release
 
-mvn clean package p2-milestone
+diff --git a/org.example.feature/feature.xml b/org.example.feature/feature.xml
+index 0f67cda..b3b3f50 100644
+--- a/org.example.feature/feature.xml
++++ b/org.example.feature/feature.xml
+@@ -2,7 +2,7 @@
+ <feature
+       id="org.example.feature"
+       label="Example Feature"
+-      version="1.0.0.qualifier"
++      version="1.0.0.v20230318-1827"
+       provider-name="Lorenzo Bettini">
+ 
+    <description url="http://www.example.com/description">
+diff --git a/org.example.feature/pom.xml b/org.example.feature/pom.xml
+index 7337a44..8a0d05f 100644
+--- a/org.example.feature/pom.xml
++++ b/org.example.feature/pom.xml
+@@ -8,7 +8,7 @@
+                <relativePath>../org.example.parent/pom.xml</relativePath>
+                <groupId>org.example</groupId>
+                <artifactId>org.example.parent</artifactId>
+-               <version>1.0.0-SNAPSHOT</version>
++               <version>1.0.0</version>
+
+
+Maven-version: 1.0.0
+Bundle-Version: 1.0.0.v20230318-1827
+
+MILESTONE
+
+./prepare-for-milestone.sh M1
+mvn clean package -Pp2-release
+
+diff --git a/org.example.feature/feature.xml b/org.example.feature/feature.xml
+index 0f67cda..b183616 100644
+--- a/org.example.feature/feature.xml
++++ b/org.example.feature/feature.xml
+@@ -2,7 +2,7 @@
+ <feature
+       id="org.example.feature"
+       label="Example Feature"
+-      version="1.0.0.qualifier"
++      version="1.0.0.v20230318-1830"
+       provider-name="Lorenzo Bettini">
+ 
+    <description url="http://www.example.com/description">
+diff --git a/org.example.feature/pom.xml b/org.example.feature/pom.xml
+index 7337a44..71708fc 100644
+--- a/org.example.feature/pom.xml
++++ b/org.example.feature/pom.xml
+@@ -8,7 +8,7 @@
+                <relativePath>../org.example.parent/pom.xml</relativePath>
+                <groupId>org.example</groupId>
+                <artifactId>org.example.parent</artifactId>
+-               <version>1.0.0-SNAPSHOT</version>
++               <version>1.0.0.M1</version>
+
+Maven-version: 1.0.0.M1
+Bundle-Version: 1.0.0.v20230318-1830
