@@ -33,7 +33,7 @@ public class HelloVersion {
 		}
 	}
 
-	public static String readBundleVersionFromManifest() {
+	public static String getMavenVersion() {
 		URL baseURL = HelloVersion.Plugin.INSTANCE.getBaseURL();
 		try (InputStream is = new URL (baseURL + "META-INF/MANIFEST.MF").openStream()) {
 			Manifest manifest = new Manifest(is);
