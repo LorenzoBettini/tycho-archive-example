@@ -24,6 +24,8 @@ public class HelloVersionTest {
 		System.out.println("Bundle-Version: " + bundleVersion);
 		System.out.println("Maven-Version: " + mavenVersion);
 
+		System.out.println("Expected Maven-Version: " + expectedMavenVersion);
+
 		String expectedPrefixVersion = "1.0.0";
 		String expectedPrefixTimestamp = "v20";
 		assertTrue("expected starting with " + expectedPrefixVersion,
@@ -31,7 +33,7 @@ public class HelloVersionTest {
 		assertTrue("expected containing with timestamp " + expectedPrefixTimestamp,
 			bundleVersion.contains(expectedPrefixTimestamp));
 
-		assertEquals(expectedMavenVersion, expectedMavenVersion);
+		assertEquals(expectedMavenVersion, mavenVersion);
 	}
 
 }

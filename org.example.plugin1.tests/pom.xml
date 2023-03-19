@@ -13,4 +13,18 @@
 	<artifactId>org.example.plugin1.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<configuration>
+					<systemProperties>
+						<expectedMavenVersion>${expectedMavenVersion}</expectedMavenVersion>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
