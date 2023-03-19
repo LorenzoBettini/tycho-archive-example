@@ -53,6 +53,10 @@ jobs:
           key: ${{ runner.os }}-m2-release-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-release-
 
+      - name: Prepare for release
+        run: ./prepare-for-release.sh
+        working-directory: org.example.parent
+
       - name: Build and test
         run: mvn verify -DexpectedMavenVersion=1.0.0
         working-directory: org.example.parent
@@ -76,6 +80,10 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-milestone-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-milestone-
+
+      - name: Prepare for milestone
+        run: ./prepare-for-milestone.sh M1
+        working-directory: org.example.parent
 
       - name: Build and test
         run: mvn verify -DexpectedMavenVersion=1.0.0.M1
