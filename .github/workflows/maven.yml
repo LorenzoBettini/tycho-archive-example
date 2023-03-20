@@ -34,7 +34,7 @@ jobs:
         working-directory: org.example.parent
 
       - name: Archive p2 Repositories
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: p2-repositories-SNAPSHOT
@@ -69,7 +69,7 @@ jobs:
         working-directory: org.example.parent
 
       - name: Archive p2 Repositories
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: p2-repositories-RELEASE
@@ -104,7 +104,7 @@ jobs:
         working-directory: org.example.parent
 
       - name: Archive p2 Repositories
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: p2-repositories-MILESTONE
