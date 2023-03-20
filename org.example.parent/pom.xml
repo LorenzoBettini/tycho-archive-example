@@ -115,13 +115,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-packaging-plugin</artifactId>
-						<configuration>
-							<strictVersions>false</strictVersions>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
