@@ -98,6 +98,8 @@
 			<id>replace-qualifier-with-timestamp</id>
 			<build>
 				<plugins>
+					<!-- meant to be called explicitly via the goal syntax:
+						build-helper:timestamp-property@timestamp -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
@@ -107,7 +109,7 @@
 								<goals>
 									<goal>timestamp-property</goal>
 								</goals>
-								<phase>validate</phase>
+								<phase>none</phase>
 								<configuration>
 									<name>computedTimestamp</name>
 									<pattern>${timestamp-pattern}</pattern>
