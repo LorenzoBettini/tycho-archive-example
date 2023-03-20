@@ -118,34 +118,9 @@
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-packaging-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>build-qualifier</id>
-								<goals>
-									<goal>build-qualifier</goal>
-								</goals>
-								<phase>validate</phase>
-							</execution>
-						</executions>
 						<configuration>
 							<strictVersions>false</strictVersions>
 						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-versions-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>qualifier-to-timestamp</id>
-								<goals>
-									<goal>set-version</goal>
-								</goals>
-								<phase>validate</phase>
-								<configuration>
-									<newVersion>${unqualifiedVersion}.${computedTimestamp}</newVersion>
-								</configuration>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
