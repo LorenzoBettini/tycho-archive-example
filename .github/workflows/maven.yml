@@ -61,7 +61,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-release-
 
       - name: Prepare for release
-        run: ./prepare-for-release.sh
+        run: ./scripts/prepare-for-release.sh
         working-directory: org.example.parent
 
       - name: Build and test
@@ -96,7 +96,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-milestone-
 
       - name: Prepare for milestone
-        run: ./prepare-for-milestone.sh M1
+        run: ./scripts/prepare-for-milestone.sh M1
         working-directory: org.example.parent
 
       - name: Build and test
