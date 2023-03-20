@@ -7,7 +7,7 @@ Bundle-Version: 1.0.0.v20230318-1815
 
 RELEASE
 
-./prepare-for-release.sh
+./scripts/prepare-for-release.sh
 mvn clean package -Pp2-release
 
 diff --git a/org.example.feature/feature.xml b/org.example.feature/feature.xml
@@ -40,7 +40,7 @@ Bundle-Version: 1.0.0.v20230318-1827
 
 MILESTONE
 
-./prepare-for-milestone.sh M1
+./scripts/prepare-for-milestone.sh M1
 mvn clean package -Pp2-release
 
 diff --git a/org.example.feature/feature.xml b/org.example.feature/feature.xml

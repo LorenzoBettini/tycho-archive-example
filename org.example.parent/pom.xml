@@ -26,6 +26,7 @@
 		<versions-version>2.15.0</versions-version>
 
 		<expectedMavenVersion>${project.version}</expectedMavenVersion>
+		<timestamp-pattern>'v'yyyyMMdd-HHmm</timestamp-pattern>
 	</properties>
 
 	<repositories>
@@ -67,7 +68,7 @@
 								<phase>validate</phase>
 								<configuration>
 									<name>computedTimestamp</name>
-									<pattern>'v'yyyyMMdd-HHmm</pattern>
+									<pattern>${timestamp-pattern}</pattern>
 								</configuration>
 							</execution>
 						</executions>
@@ -97,6 +98,8 @@
 			<id>replace-qualifier-with-timestamp</id>
 			<build>
 				<plugins>
+					<!-- meant to be called explicitly via the goal syntax:
+						build-helper:timestamp-property@timestamp -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
@@ -106,42 +109,10 @@
 								<goals>
 									<goal>timestamp-property</goal>
 								</goals>
-								<phase>validate</phase>
+								<phase>none</phase>
 								<configuration>
 									<name>computedTimestamp</name>
-									<pattern>'v'yyyyMMdd-HHmm</pattern>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-packaging-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>build-qualifier</id>
-								<goals>
-									<goal>build-qualifier</goal>
-								</goals>
-								<phase>validate</phase>
-							</execution>
-						</executions>
-						<configuration>
-							<strictVersions>false</strictVersions>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-versions-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>qualifier-to-timestamp</id>
-								<goals>
-									<goal>set-version</goal>
-								</goals>
-								<phase>validate</phase>
-								<configuration>
-									<newVersion>${unqualifiedVersion}.${computedTimestamp}</newVersion>
+									<pattern>${timestamp-pattern}</pattern>
 								</configuration>
 							</execution>
 						</executions>
@@ -229,7 +200,7 @@
 					<artifactId>tycho-packaging-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<configuration>
-						<format>'v'yyyyMMdd-HHmm</format>
+						<format>${timestamp-pattern}</format>
 						<skipPomGeneration>true</skipPomGeneration>
 					</configuration>
 				</plugin>
