@@ -13,6 +13,10 @@
 	<artifactId>org.example.plugin1.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
