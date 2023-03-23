@@ -71,6 +71,19 @@
 									<pattern>${timestamp-pattern}</pattern>
 								</configuration>
 							</execution>
+							<execution>
+								<id>timestamp-replacement</id>
+								<goals>
+									<goal>regex-property</goal>
+								</goals>
+								<phase>validate</phase>
+								<configuration>
+									<name>processedTimestamp</name>
+									<value>${computedTimestamp}</value>
+									<regex>v(\d+)-(\d+)</regex>
+									<replacement>$1$2</replacement>
+								</configuration>
+							</execution>
 						</executions>
 					</plugin>
 					<plugin>
@@ -85,7 +98,7 @@
 								<phase>validate</phase>
 								<configuration>
 									<message>
-										Timestamp is ${computedTimestamp}
+										${line.separator}Timestamp is ${computedTimestamp}${line.separator}Processed Timestamp is ${processedTimestamp}
 									</message>
 								</configuration>
 							</execution>
